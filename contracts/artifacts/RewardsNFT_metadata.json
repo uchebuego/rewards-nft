@@ -204,19 +204,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getTokenIdCounter",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -249,7 +236,7 @@
 					},
 					{
 						"internalType": "string",
-						"name": "tokenURI",
+						"name": "uri",
 						"type": "string"
 					}
 				],
@@ -415,6 +402,49 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenOfOwnerByIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
 					}
@@ -425,6 +455,19 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -520,14 +563,17 @@
 				"setApprovalForAll(address,bool)": {
 					"details": "See {IERC721-setApprovalForAll}."
 				},
-				"supportsInterface(bytes4)": {
-					"details": "See {IERC165-supportsInterface}"
-				},
 				"symbol()": {
 					"details": "See {IERC721Metadata-symbol}."
 				},
-				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
+				"tokenByIndex(uint256)": {
+					"details": "See {IERC721Enumerable-tokenByIndex}."
+				},
+				"tokenOfOwnerByIndex(address,uint256)": {
+					"details": "See {IERC721Enumerable-tokenOfOwnerByIndex}."
+				},
+				"totalSupply()": {
+					"details": "See {IERC721Enumerable-totalSupply}."
 				},
 				"transferFrom(address,address,uint256)": {
 					"details": "See {IERC721-transferFrom}."
@@ -616,12 +662,28 @@
 				"dweb:/ipfs/QmYvPafLfoquiDMEj7CKHtvbgHu7TJNPSVPSCjrtjV8HjV"
 			]
 		},
+		"@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
+			"keccak256": "0xa8796bd16014cefb8c26449413981a49c510f92a98d6828494f5fd046223ced3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://63a5e0bb5a7d182e0d0eef87033f78115eab791de3626a929bc98c157087880a",
+				"dweb:/ipfs/QmetkXAu2CJKS4qrZtEQPU8okAPwUwa6HL4XYwk8vrYMk8"
+			]
+		},
 		"@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
 			"keccak256": "0x7942989e3525aec1672469e4c65fb33fbd19c785c9cadbcb70fcbe1fe8bfdd37",
 			"license": "MIT",
 			"urls": [
 				"bzz-raw://6c9f260258c2be0e3b75f8ca285872c4bfa3a8fc97fdc2e62366c78abf22b54f",
 				"dweb:/ipfs/QmTg1DMNwCDj8NVi6i1noqx7cxuRdPP4VyW4fzDkKAKmH2"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
+			"keccak256": "0xd1556954440b31c97a142c6ba07d5cade45f96fafd52091d33a14ebe365aecbf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://26fef835622b46a5ba08b3ef6b46a22e94b5f285d0f0fb66b703bd30217d2c34",
+				"dweb:/ipfs/QmZ548qdwfL1qF7aXz3xh1GCdTiST81kGGuKRqVUfYmPZR"
 			]
 		},
 		"@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
@@ -646,6 +708,14 @@
 			"urls": [
 				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"@openzeppelin/contracts/utils/Counters.sol": {
+			"keccak256": "0xf0018c2440fbe238dd3a8732fa8e17a0f9dce84d31451dc8a32f6d62b349c9f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59e1c62884d55b70f3ae5432b44bb3166ad71ae3acd19c57ab6ddc3c87c325ee",
+				"dweb:/ipfs/QmezuXg5GK5oeA4F91EZhozBFekhq5TD966bHPH18cCqhu"
 			]
 		},
 		"@openzeppelin/contracts/utils/Strings.sol": {
@@ -689,11 +759,11 @@
 			]
 		},
 		"contracts/RewardsNFT.sol": {
-			"keccak256": "0x68538bb8029779c8678fbbef8a9a7aaa4006106f6047a6820a82c6c46a2dd700",
+			"keccak256": "0xd84f521f4039ac278bda0c0998218738b2e0cf5f6726612cae20ef1903d51661",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://29d8a71f9ae49280ebf0a1146ca69b3a8898b0ba1b950a8a93c8c4f207a71b84",
-				"dweb:/ipfs/QmZPSTEGmYSbHMvW6Y4fnti5d2rE9zJ65Hu6mnB5EttrUs"
+				"bzz-raw://dfa4a2646d0ca0493718e43de6d4e30a2081ce0568e828aef312e75db8116d9d",
+				"dweb:/ipfs/QmQZz5Bzr12cRaP3AFe5RyXZaPFuptEJ2TVT5rK98JJrk1"
 			]
 		}
 	},
